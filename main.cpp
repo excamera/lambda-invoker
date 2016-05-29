@@ -6,6 +6,12 @@
 #include <openssl/crypto.h>
 #include <aws/lambda/LambdaClient.h>
 #include <aws/lambda/model/InvokeRequest.h>
+#include <aws/lambda/model/InvokeResult.h>
+#include <aws/core/client/AWSError.h>
+#include <aws/core/Core_EXPORTS.h>
+#include <aws/core/client/RetryStrategy.h>
+#include <aws/core/utils/UnreferencedParam.h>
+#include <aws/core/client/AWSErrorMarshaller.h>
 
 #include <fstream>
 #include <ctime>
@@ -17,6 +23,7 @@
 #include <cstring>
 #include <functional>
 #include <map>
+#include <time.h>
 
 #include "json.hpp"
 
@@ -25,27 +32,49 @@ using namespace Aws::S3;
 using namespace Aws::S3::Model;
 using namespace Aws::Lambda;
 using namespace Aws::Lambda::Model;
+using namespace Aws::Utils;
+using namespace Aws::Client;
 
 static const char* KEY = "excameratempvideosample";
 static const char* BUCKET = "excameratempvideos";
 
 static pthread_mutex_t *lockarray;
 
-class LambdaInvoke {
+class ExcameraRetryStrategy : public RetryStrategy {
     public:
-	LambdaInvoke() {
-	    
+	ExcameraRetryStrategy() {
+    	}
+
+    	bool ShouldRetry(const AWSError<CoreErrors>& error, long attemptedRetries) const {
+		return false;
+    	}
+
+	long CalculateDelayBeforeNextRetry(const AWSError<CoreErrors>& error, long attemptedRetries) const {
+		return 0;
 	}
 
-	LambdaInvoke(int num, double s, double e) {
-	    n = num;
-	    start_time = s;
-	    end_time = e;
+    private:
+    	long m_scaleFactor;
+    	long m_maxRetries;
+};
+
+class LambdaInvocationRecord {
+    public:
+	LambdaInvocationRecord() {
+	    start_time        = 0;
+	    end_time          = 0;
+	    start_time_inside = 0;
+	    end_time_inside   = 0;
+	    result            = false;
+	    str               = "";
 	}
 
-	int n;
-    	double start_time;
-    	double end_time;
+    	time_t start_time;
+    	time_t end_time;
+	time_t start_time_inside;
+	time_t end_time_inside;
+	bool result;
+	std::string str;
 };
 
 static void lock_callback(int mode, int type, char *file, int line)
@@ -93,22 +122,6 @@ static void kill_locks(void)
   OPENSSL_free(lockarray);
 }
 
-clock_t begin() {
-    return clock();
-}
-
-clock_t end() {
-    return clock();
-}
-
-double elapsed(clock_t begin, clock_t end) {
-    return ((double) (end - begin)) / CLOCKS_PER_SEC;
-}
-
-double toTime(clock_t t) {
-    return ((double) t) / CLOCKS_PER_SEC;
-}
-
 double average(vector<double> times) {
     double avg = 0;
     int size = times.size();
@@ -131,88 +144,115 @@ string streambufToString(basic_streambuf<char>* buf) {
     return s;
 }
 
-void writeToFile(vector<LambdaInvoke> a) {
+void writeToFile(char* filename, int n, LambdaInvocationRecord lir) {
     ofstream myfile;
-    myfile.open ("results.txt");
-    for(vector<LambdaInvoke>::iterator it = a.begin(); it != a.end(); ++it) {
-	LambdaInvoke li = *it;
-	myfile<<li.n<<","<<li.start_time<<","<<li.end_time<<"\n";
-    }
+    myfile.open(filename,  ios::out | ios::app);
+    myfile<<n<<","<<lir.start_time<<","<<lir.start_time_inside<<","<<lir.end_time_inside<<","<<lir.end_time<<"\n";
     myfile.close();
+}
+
+LambdaInvocationRecord lambda_invoke_request(Aws::Lambda::LambdaClient &client,
+				  Aws::Lambda::Model::InvokeRequest &ir) {
+    std::string str("");
+    LambdaInvocationRecord lir;
+    time(&(lir.start_time));
+    auto invokeOutcome = client.Invoke(ir);
+    if(invokeOutcome.IsSuccess()) {
+        basic_streambuf<char>* buf = invokeOutcome.GetResult().GetPayload().rdbuf();
+	time(&(lir.end_time));
+	lir.result = true;
+	lir.str = str;
+    	if (buf == NULL) {
+            return lir;
+        }
+     	string sbuf = streambufToString(buf);
+     	if (sbuf.empty()) {
+            return lir;
+     	}
+	lir.str = sbuf;
+     	return lir;
+    } else {
+        lir.result = false;
+	lir.str = str;
+	return lir;
+    }
+    
 }
 
 int main(int argc, char* argv[])
 {
     cout<<"Starting AWS Lambda Test\n";
+
     init_locks();
+
+    if (argc < 4) {
+	cout<<"Too few arguments."<<endl;
+	return -1;
+    }
     int nLambdas = atoi(argv[1]);
+    char* functionName = argv[2];
+    char* filename = argv[3];
+
+    ofstream myfile;
+    myfile.open(filename, ios::out);
+    myfile.close();
+
+    static const char* CLIENT_CONFIGURATION_ALLOCATION_TAG = "ClientConfiguration";
     Aws::Client::ClientConfiguration config;
     config.region = Aws::Region::EU_WEST_1;
     config.requestTimeoutMs = 10000;
-    config.maxConnections = 1100;
+    config.maxConnections = 1200;
+    config.retryStrategy = Aws::MakeShared<ExcameraRetryStrategy>(CLIENT_CONFIGURATION_ALLOCATION_TAG);
 
-    vector<Aws::Lambda::Model::InvokeOutcomeCallable> futures;
-    vector<LambdaInvoke> livector;
+    std::vector<std::future<LambdaInvocationRecord>> futures;
     Aws::Lambda::Model::InvokeRequest invokerequest;
-    invokerequest.WithFunctionName("testLamba");
+    invokerequest.WithFunctionName(functionName);
     Aws::Lambda::LambdaClient client{config};
 
-    vector<double> start_times;
-    vector<double> end_times;
-    vector<double> diff_times;
-    double start_time_network[nLambdas];
-    double diff_time_network = 0;
-    int i;
+    vector<double> diff_times_lambda_only;
+    vector<double> diff_times_lambda_network;
+    time_t beginTime, endTime;
 
-    clock_t beginTime = begin();
-    for(i = 0; i < nLambdas; i++) {
-	start_time_network[i] = begin();
-    	futures.push_back(client.InvokeCallable(invokerequest));
-	
+    time(&beginTime);
+    for(int i = 0; i < nLambdas; i++) {
+    	//futures.push_back(client.InvokeCallable(invokerequest));
+	futures.push_back(std::async(std::launch::async, 
+				     lambda_invoke_request,
+				     std::ref(client),
+				     std::ref(invokerequest)
+				    )
+			 );
     }
+
     int success = 0;
     int failures = 0;
-    i = 0;
+    int i = 0;
     for(auto &e : futures){
-	auto invokeOutcome = e.get();
-    	if(invokeOutcome.IsSuccess()){
+	LambdaInvocationRecord lir = e.get();
+	if (lir.result == true) {
 	    success += 1;
-	    basic_streambuf<char>* buf = invokeOutcome.GetResult().GetPayload().rdbuf();
-	    if (buf == NULL) {
-		cout<<"Check Lambda Function Name. InvokeOutcome is NULL\n";
-		return -1;
-	    }
-	    string sbuf = streambufToString(buf);
-	    if (sbuf.empty()) {
-		cout<<"Conversion from streambuf to buf failed\n";
-		return -1;
-	    }
-	    auto json = nlohmann::json::parse(sbuf);
+	    auto json = nlohmann::json::parse(lir.str);
             string output = json.find("output").value();
-	    double stt  = json.find("start_time").value();
-	    double endt = json.find("end_time").value();
-            //start_times.push_back(stt);
-            //end_times.push_back(endt);
-	    diff_times.push_back(endt-stt);
-	    clock_t end_time_network = end();
-	    diff_time_network += elapsed(start_time_network[i], end_time_network);
-	    LambdaInvoke li(i, toTime(start_time_network[i]), toTime(end_time_network));
-            livector.push_back(li);
-	    i++;
-    	} else {
+	    time_t stt  = json.find("start_time").value();
+	    time_t endt = json.find("end_time").value();
+	    diff_times_lambda_only.push_back(difftime(endt, stt));
+	    diff_times_lambda_network.push_back(difftime(lir.end_time, lir.start_time));
+	    lir.start_time_inside = stt;
+	    lir.end_time_inside   = endt;
+	} else {
 	    failures += 1;
-	    cout<<"Error while putting Object "<<invokeOutcome.GetError().GetExceptionName()<<" "<<invokeOutcome.GetError().GetMessage()<<endl;
- 	}
+	}
+	writeToFile(filename, i, lir);
+	i++;
     }
 
-    clock_t endTime = end();
-    cout<<"Total execution time of "<<nLambdas<<": "<<elapsed(beginTime, endTime)<<endl;
+    time(&endTime);
+    cout<<"Total execution time of "<<nLambdas<<": "<<difftime(endTime, beginTime)<<endl;
 
     init_locks();
 
-    writeToFile(livector);
-    cout<<"Average time including network latency : "<<diff_time_network/success<<endl;
-    cout<<"Average time excluding network latency : "<<average(diff_times)<<endl;
+    cout<<"Average time including network latency : "<<average(diff_times_lambda_network)<<endl;
+    cout<<"Average time excluding network latency : "<<average(diff_times_lambda_only)<<endl;
     cout<<"Total no. of success : "<<success<<" and total no. of failures : "<<failures<<endl;
 
     return 0;  

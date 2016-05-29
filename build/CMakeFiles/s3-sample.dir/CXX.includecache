@@ -73,6 +73,18 @@ aws/lambda/LambdaClient.h
 -
 aws/lambda/model/InvokeRequest.h
 -
+aws/lambda/model/InvokeResult.h
+-
+aws/core/client/AWSError.h
+-
+aws/core/Core_EXPORTS.h
+-
+aws/core/client/RetryStrategy.h
+-
+aws/core/utils/UnreferencedParam.h
+-
+aws/core/client/AWSErrorMarshaller.h
+-
 fstream
 -
 ctime
@@ -92,6 +104,8 @@ cstring
 functional
 -
 map
+-
+time.h
 -
 json.hpp
 /home/kvasukib/LambdaPerf/json.hpp
@@ -188,6 +202,12 @@ aws/core/Core_EXPORTS.h
 aws/core/utils/memory/stl/AWSString.h
 -
 
+/home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AWSErrorMarshaller.h
+aws/core/Core_EXPORTS.h
+-
+aws/core/utils/memory/stl/AWSString.h
+-
+
 /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AsyncCallerContext.h
 aws/core/utils/memory/stl/AWSString.h
 -
@@ -209,6 +229,10 @@ memory
 /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/CoreErrors.h
 aws/core/Core_EXPORTS.h
 /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/aws/core/Core_EXPORTS.h
+
+/home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/RetryStrategy.h
+aws/core/Core_EXPORTS.h
+-
 
 /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/external/json-cpp/json.h
 cpptl/config.h

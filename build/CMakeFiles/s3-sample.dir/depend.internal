@@ -14,9 +14,11 @@ CMakeFiles/s3-sample.dir/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/SDKConfig.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AWSClient.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AWSError.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AWSErrorMarshaller.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AsyncCallerContext.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/ClientConfiguration.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/CoreErrors.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/RetryStrategy.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/external/json-cpp/json.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/HttpRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/HttpResponse.h
