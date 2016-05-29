@@ -24,10 +24,13 @@
 #include <functional>
 #include <map>
 #include <time.h>
+#include <chrono>
 
 #include "json.hpp"
+#define NANO_SECOND 1000000000
 
 using namespace std;
+using namespace std::chrono;
 using namespace Aws::S3;
 using namespace Aws::S3::Model;
 using namespace Aws::Lambda;
@@ -61,25 +64,29 @@ class ExcameraRetryStrategy : public RetryStrategy {
 class LambdaInvocationRecord {
     public:
 	LambdaInvocationRecord() {
-	    start_time        = 0;
-	    end_time          = 0;
 	    start_time_inside = 0;
 	    end_time_inside   = 0;
 	    result            = false;
 	    str               = "";
 	}
 
-    	time_t start_time;
-    	time_t end_time;
-	time_t start_time_inside;
-	time_t end_time_inside;
+    	high_resolution_clock::time_point start_time;
+    	high_resolution_clock::time_point end_time;
+	double start_time_inside;
+	double end_time_inside;
 	bool result;
 	std::string str;
 };
 
-static time_t getTime()
+static high_resolution_clock::time_point getTime()
 {
-  time_t t = time(NULL);
+  high_resolution_clock::time_point t1 = high_resolution_clock::now();
+  return std::chrono::time_point_cast<std::chrono::nanoseconds>(t1);
+}
+
+static double elapsed(high_resolution_clock::time_point t2, high_resolution_clock::time_point t1)
+{
+  return duration_cast<chrono::seconds>(t2 - t1).count();
 }
 
 static void lock_callback(int mode, int type, char *file, int line)
@@ -149,10 +156,27 @@ string streambufToString(basic_streambuf<char>* buf) {
     return s;
 }
 
+double convertClockToDouble(high_resolution_clock::time_point t)
+{
+  unsigned long ul = t.time_since_epoch() / std::chrono::milliseconds(1);
+  double d = (double)ul / 1000;
+  return d;
+}
+
 void writeToFile(char* filename, int n, LambdaInvocationRecord lir) {
     ofstream myfile;
     myfile.open(filename,  ios::out | ios::app);
-    myfile<<n<<","<<lir.start_time<<","<<lir.start_time_inside<<","<<lir.end_time_inside<<","<<lir.end_time<<"\n";
+    myfile<<std::fixed
+          <<n
+	  <<","
+	  <<convertClockToDouble(lir.start_time)
+	  <<","
+	  <<lir.start_time_inside
+	  <<","
+	  <<lir.end_time_inside
+	  <<","
+	  <<convertClockToDouble(lir.end_time)
+	  <<"\n";
     myfile.close();
 }
 
@@ -164,7 +188,6 @@ LambdaInvocationRecord lambda_invoke_request(Aws::Lambda::LambdaClient &client,
     auto invokeOutcome = client.Invoke(ir);
     if(invokeOutcome.IsSuccess()) {
         basic_streambuf<char>* buf = invokeOutcome.GetResult().GetPayload().rdbuf();
-	lir.end_time = getTime();
 	lir.result = true;
 	lir.str = str;
     	if (buf == NULL) {
@@ -216,7 +239,7 @@ int main(int argc, char* argv[])
 
     vector<double> diff_times_lambda_only;
     vector<double> diff_times_lambda_network;
-    time_t beginTime, endTime;
+    high_resolution_clock::time_point beginTime, endTime;
 
     beginTime = getTime();
     for(int i = 0; i < nLambdas; i++) {
@@ -238,12 +261,13 @@ int main(int argc, char* argv[])
 	    success += 1;
 	    auto json = nlohmann::json::parse(lir.str);
             string output = json.find("output").value();
-	    time_t stt  = json.find("start_time").value();
-	    time_t endt = json.find("end_time").value();
-	    diff_times_lambda_only.push_back(difftime(endt, stt));
-	    diff_times_lambda_network.push_back(difftime(lir.end_time, lir.start_time));
+	    double stt  = json.find("start_time").value();
+	    double endt = json.find("end_time").value();
 	    lir.start_time_inside = stt;
 	    lir.end_time_inside   = endt;
+	    lir.end_time = getTime();
+	    diff_times_lambda_only.push_back(endt - stt);
+            diff_times_lambda_network.push_back(elapsed(lir.end_time, lir.start_time));
 	} else {
 	    failures += 1;
 	}
@@ -252,7 +276,7 @@ int main(int argc, char* argv[])
     }
 
     endTime = getTime();
-    cout<<"Total execution time of "<<nLambdas<<": "<<difftime(endTime, beginTime)<<endl;
+    cout<<"Total execution time of "<<nLambdas<<": "<<elapsed(endTime, beginTime)<<endl;
 
     init_locks();
 
