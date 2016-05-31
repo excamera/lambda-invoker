@@ -114,29 +114,29 @@ s3-sample/fast:
 	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/build
 .PHONY : s3-sample/fast
 
-mainbk.o: mainbk.cpp.o
-.PHONY : mainbk.o
+mainretry.o: mainretry.cpp.o
+.PHONY : mainretry.o
 
 # target to build an object file
-mainbk.cpp.o:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainbk.cpp.o
-.PHONY : mainbk.cpp.o
+mainretry.cpp.o:
+	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainretry.cpp.o
+.PHONY : mainretry.cpp.o
 
-mainbk.i: mainbk.cpp.i
-.PHONY : mainbk.i
+mainretry.i: mainretry.cpp.i
+.PHONY : mainretry.i
 
 # target to preprocess a source file
-mainbk.cpp.i:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainbk.cpp.i
-.PHONY : mainbk.cpp.i
+mainretry.cpp.i:
+	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainretry.cpp.i
+.PHONY : mainretry.cpp.i
 
-mainbk.s: mainbk.cpp.s
-.PHONY : mainbk.s
+mainretry.s: mainretry.cpp.s
+.PHONY : mainretry.s
 
 # target to generate assembly for a file
-mainbk.cpp.s:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainbk.cpp.s
-.PHONY : mainbk.cpp.s
+mainretry.cpp.s:
+	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainretry.cpp.s
+.PHONY : mainretry.cpp.s
 
 # Help Target
 help:
@@ -147,9 +147,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... s3-sample"
-	@echo "... mainbk.o"
-	@echo "... mainbk.i"
-	@echo "... mainbk.s"
+	@echo "... mainretry.o"
+	@echo "... mainretry.i"
+	@echo "... mainretry.s"
 .PHONY : help
 
 

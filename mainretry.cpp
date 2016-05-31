@@ -45,11 +45,15 @@ static pthread_mutex_t *lockarray;
 
 class ExcameraRetryStrategy : public RetryStrategy {
     public:
-	ExcameraRetryStrategy() {
+	ExcameraRetryStrategy(long maxRetries = 2, long scaleFactor = 0) :
+				m_scaleFactor(scaleFactor), m_maxRetries(maxRetries) {
     	}
 
     	bool ShouldRetry(const AWSError<CoreErrors>& error, long attemptedRetries) const {
-		return false;
+		if (attemptedRetries >= m_maxRetries) {
+        	    return false;
+		}
+        	return error.ShouldRetry();
     	}
 
 	long CalculateDelayBeforeNextRetry(const AWSError<CoreErrors>& error, long attemptedRetries) const {
