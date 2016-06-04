@@ -49,37 +49,37 @@ include CMakeFiles/s3-sample.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/s3-sample.dir/flags.make
 
-CMakeFiles/s3-sample.dir/mainretry.cpp.o: CMakeFiles/s3-sample.dir/flags.make
-CMakeFiles/s3-sample.dir/mainretry.cpp.o: ../mainretry.cpp
+CMakeFiles/s3-sample.dir/mainbk.cpp.o: CMakeFiles/s3-sample.dir/flags.make
+CMakeFiles/s3-sample.dir/mainbk.cpp.o: ../mainbk.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/kvasukib/LambdaPerf/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/s3-sample.dir/mainretry.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/s3-sample.dir/mainretry.cpp.o -c /home/kvasukib/LambdaPerf/mainretry.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/s3-sample.dir/mainbk.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/s3-sample.dir/mainbk.cpp.o -c /home/kvasukib/LambdaPerf/mainbk.cpp
 
-CMakeFiles/s3-sample.dir/mainretry.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/s3-sample.dir/mainretry.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/kvasukib/LambdaPerf/mainretry.cpp > CMakeFiles/s3-sample.dir/mainretry.cpp.i
+CMakeFiles/s3-sample.dir/mainbk.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/s3-sample.dir/mainbk.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/kvasukib/LambdaPerf/mainbk.cpp > CMakeFiles/s3-sample.dir/mainbk.cpp.i
 
-CMakeFiles/s3-sample.dir/mainretry.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/s3-sample.dir/mainretry.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/kvasukib/LambdaPerf/mainretry.cpp -o CMakeFiles/s3-sample.dir/mainretry.cpp.s
+CMakeFiles/s3-sample.dir/mainbk.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/s3-sample.dir/mainbk.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/kvasukib/LambdaPerf/mainbk.cpp -o CMakeFiles/s3-sample.dir/mainbk.cpp.s
 
-CMakeFiles/s3-sample.dir/mainretry.cpp.o.requires:
-.PHONY : CMakeFiles/s3-sample.dir/mainretry.cpp.o.requires
+CMakeFiles/s3-sample.dir/mainbk.cpp.o.requires:
+.PHONY : CMakeFiles/s3-sample.dir/mainbk.cpp.o.requires
 
-CMakeFiles/s3-sample.dir/mainretry.cpp.o.provides: CMakeFiles/s3-sample.dir/mainretry.cpp.o.requires
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainretry.cpp.o.provides.build
-.PHONY : CMakeFiles/s3-sample.dir/mainretry.cpp.o.provides
+CMakeFiles/s3-sample.dir/mainbk.cpp.o.provides: CMakeFiles/s3-sample.dir/mainbk.cpp.o.requires
+	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainbk.cpp.o.provides.build
+.PHONY : CMakeFiles/s3-sample.dir/mainbk.cpp.o.provides
 
-CMakeFiles/s3-sample.dir/mainretry.cpp.o.provides.build: CMakeFiles/s3-sample.dir/mainretry.cpp.o
+CMakeFiles/s3-sample.dir/mainbk.cpp.o.provides.build: CMakeFiles/s3-sample.dir/mainbk.cpp.o
 
 # Object files for target s3-sample
 s3__sample_OBJECTS = \
-"CMakeFiles/s3-sample.dir/mainretry.cpp.o"
+"CMakeFiles/s3-sample.dir/mainbk.cpp.o"
 
 # External object files for target s3-sample
 s3__sample_EXTERNAL_OBJECTS =
 
-s3-sample: CMakeFiles/s3-sample.dir/mainretry.cpp.o
+s3-sample: CMakeFiles/s3-sample.dir/mainbk.cpp.o
 s3-sample: CMakeFiles/s3-sample.dir/build.make
 s3-sample: /home/kvasukib/build-aws-sdk-cpp/aws-cpp-sdk-s3/libaws-cpp-sdk-s3.so
 s3-sample: /home/kvasukib/build-aws-sdk-cpp/aws-cpp-sdk-lambda/libaws-cpp-sdk-lambda.so
@@ -92,7 +92,7 @@ s3-sample: CMakeFiles/s3-sample.dir/link.txt
 CMakeFiles/s3-sample.dir/build: s3-sample
 .PHONY : CMakeFiles/s3-sample.dir/build
 
-CMakeFiles/s3-sample.dir/requires: CMakeFiles/s3-sample.dir/mainretry.cpp.o.requires
+CMakeFiles/s3-sample.dir/requires: CMakeFiles/s3-sample.dir/mainbk.cpp.o.requires
 .PHONY : CMakeFiles/s3-sample.dir/requires
 
 CMakeFiles/s3-sample.dir/clean:
