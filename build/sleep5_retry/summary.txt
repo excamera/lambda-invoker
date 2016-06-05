@@ -76,3 +76,19 @@ Total execution time of 1000: 8
 Average time including network latency : 5.19838
 Average time excluding network latency : 5.00258
 Total no. of success : 988 and total no. of failures : 12
+
+11 retries:
+===========
+Starting AWS Lambda Test
+Total execution time of 1000: 8
+Average time including network latency : 5.20774
+Average time excluding network latency : 5.00293
+Total no. of success : 982 and total no. of failures : 18
+
+11 retries:
+===========
+Starting AWS Lambda Test
+Total execution time of 1000: 8
+Average time including network latency : 5.24004
+Average time excluding network latency : 5.00251
+Total no. of success : 979 and total no. of failures : 21

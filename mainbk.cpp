@@ -45,12 +45,8 @@ static pthread_mutex_t *lockarray;
 
 class ExcameraRetryStrategy : public RetryStrategy {
     public:
-	ExcameraRetryStrategy() {
-	    m_maxRetries = 10;
-    	}
-
-	ExcameraRetryStrategy(long maxRetries, long scaleFactor) :
-        		m_scaleFactor(0), m_maxRetries(10) {
+	ExcameraRetryStrategy(long maxRetries = 10, long scaleFactor = 25) :
+        		m_scaleFactor(scaleFactor), m_maxRetries(maxRetries) {
 	}
 
     	bool ShouldRetry(const AWSError<CoreErrors>& error, long attemptedRetries) const {
@@ -62,7 +58,14 @@ class ExcameraRetryStrategy : public RetryStrategy {
     	}
 
 	long CalculateDelayBeforeNextRetry(const AWSError<CoreErrors>& error, long attemptedRetries) const {
-		return 0;
+		AWS_UNREFERENCED_PARAM(error);
+
+    		if (attemptedRetries == 0)
+    		{
+        		return 0;
+    		}
+
+    		return (1 << attemptedRetries) * m_scaleFactor;
 	}
 
     private:
@@ -227,9 +230,23 @@ int main(int argc, char* argv[])
 	cout<<"Too few arguments."<<endl;
 	return -1;
     }
-    int nLambdas = atoi(argv[1]);
+    int nLambdas       = atoi(argv[1]);
     char* functionName = argv[2];
-    char* filename = argv[3];
+    char* filename     = argv[3];
+    long maxRetries    = 0;
+    long scaleFactor   = 0;
+
+    if (argc >= 5) {
+	maxRetries = atol(argv[4]);	
+    } else {
+	maxRetries = 10;
+    }
+
+    if (argc >= 6) {
+	scaleFactor = atol(argv[5]);
+    } else {
+	scaleFactor = 25;
+    }
 
     ofstream myfile;
     myfile.open(filename, ios::out);
@@ -240,7 +257,7 @@ int main(int argc, char* argv[])
     config.region = Aws::Region::EU_WEST_1;
     config.requestTimeoutMs = 10000;
     config.maxConnections = 1200;
-    config.retryStrategy = Aws::MakeShared<ExcameraRetryStrategy>(CLIENT_CONFIGURATION_ALLOCATION_TAG);
+    config.retryStrategy = Aws::MakeShared<ExcameraRetryStrategy>(CLIENT_CONFIGURATION_ALLOCATION_TAG, maxRetries, scaleFactor);
 
     std::vector<std::future<LambdaInvocationRecord>> futures;
     Aws::Lambda::Model::InvokeRequest invokerequest;
