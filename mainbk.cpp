@@ -88,6 +88,8 @@ class LambdaInvocationRecord {
 	double end_time_inside;
 	bool result;
 	std::string str;
+	Aws::String exception_name;
+	Aws::String message;
 };
 
 static high_resolution_clock::time_point getTime()
@@ -200,8 +202,8 @@ LambdaInvocationRecord lambda_invoke_request(Aws::Lambda::LambdaClient &client,
     auto invokeOutcome = client.Invoke(ir);
     if(invokeOutcome.IsSuccess()) {
         basic_streambuf<char>* buf = invokeOutcome.GetResult().GetPayload().rdbuf();
-	lir.result = true;
-	lir.str = str;
+	lir.result 		   = true;
+	lir.str    		   = str;
     	if (buf == NULL) {
             return lir;
         }
@@ -209,12 +211,14 @@ LambdaInvocationRecord lambda_invoke_request(Aws::Lambda::LambdaClient &client,
      	if (sbuf.empty()) {
             return lir;
      	}
-	lir.str = sbuf;
+	lir.str      = sbuf;
 	lir.end_time = getTime();
      	return lir;
     } else {
-        lir.result = false;
-	lir.str = str;
+        lir.result 	    = false;
+	lir.str 	    = str;
+	lir.exception_name  = invokeOutcome.GetError().GetExceptionName();
+	lir.message	    = invokeOutcome.GetError().GetMessage();
 	return lir;
     }
     
@@ -248,16 +252,19 @@ int main(int argc, char* argv[])
 	scaleFactor = 25;
     }
 
+    std::cout << "nLambdas : "    << nLambdas   << " lambda : "           << functionName << std::endl;
+    std::cout << "Retry count : " << maxRetries << " and Scale Factor : " << scaleFactor  << std::endl;
+
     ofstream myfile;
     myfile.open(filename, ios::out);
     myfile.close();
 
     static const char* CLIENT_CONFIGURATION_ALLOCATION_TAG = "ClientConfiguration";
     Aws::Client::ClientConfiguration config;
-    config.region = Aws::Region::EU_WEST_1;
+    config.region           = Aws::Region::EU_WEST_1;
     config.requestTimeoutMs = 10000;
-    config.maxConnections = 1200;
-    config.retryStrategy = Aws::MakeShared<ExcameraRetryStrategy>(CLIENT_CONFIGURATION_ALLOCATION_TAG, maxRetries, scaleFactor);
+    config.maxConnections   = 1200;
+    config.retryStrategy    = Aws::MakeShared<ExcameraRetryStrategy>(CLIENT_CONFIGURATION_ALLOCATION_TAG, maxRetries, scaleFactor);
 
     std::vector<std::future<LambdaInvocationRecord>> futures;
     Aws::Lambda::Model::InvokeRequest invokerequest;
@@ -270,7 +277,13 @@ int main(int argc, char* argv[])
 
     beginTime = getTime();
     for(int i = 0; i < nLambdas; i++) {
-    	//futures.push_back(client.InvokeCallable(invokerequest));
+	/* Original method
+	 * [futures.push_back(client.InvokeCallable(invokerequest));]
+	 * is to push InvokeCallable and
+	 * get InvokeCallableOutCome. Since we need the invokeOutcome
+	 * details through LIR object in the caller, we have changed
+	 * the way we push into future and get it back
+	 */
 	futures.push_back(std::async(std::launch::async, 
 				     lambda_invoke_request,
 				     std::ref(client),
@@ -296,19 +309,21 @@ int main(int argc, char* argv[])
             diff_times_lambda_network.push_back(elapsed(lir.end_time, lir.start_time));
 	} else {
 	    failures += 1;
+	    std::cout << "Lambda : " << i << " Exception : " << lir.exception_name << " Message : " << lir.message << std::endl;
 	}
 	writeToFile(filename, i, lir);
 	i++;
     }
 
     endTime = getTime();
-    cout<<"Total execution time of "<<nLambdas<<": "<<elapsed(endTime, beginTime)<<endl;
+    std::cout << "Total execution time of " << nLambdas << ": " << elapsed(endTime, beginTime) << std::endl;
 
     init_locks();
 
-    cout<<"Average time including network latency : "<<average(diff_times_lambda_network)<<endl;
-    cout<<"Average time excluding network latency : "<<average(diff_times_lambda_only)<<endl;
-    cout<<"Total no. of success : "<<success<<" and total no. of failures : "<<failures<<endl;
+    std::cout << "Average time including network latency : " << average(diff_times_lambda_network) << std::endl;
+    std::cout << "Average time excluding network latency : " << average(diff_times_lambda_only)    << std::endl;
+    std::cout << "Total no. of success : " << success << " and total no. of failures : " << failures << std::endl;
+    std::cout << std::endl;
 
     return 0;  
 }

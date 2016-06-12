@@ -1,0 +1,630 @@
+Starting AWS Lambda Test
+Retry count : 0 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00151
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 0 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.01757
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 0 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00148
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 0 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00148
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 0 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00146
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 0 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 1 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 1 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 1 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 1 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 1 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 1 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 2 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 2 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00138
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 2 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 2 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 2 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.0014
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 2 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.0014
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 3 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 3 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00139
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 3 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00146
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 3 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 3 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00154
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 3 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 4 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00147
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 4 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 4 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.0014
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 4 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 4 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00146
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 4 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00139
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 5 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 5 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 5 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00138
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 5 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 5 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 5 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 6 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.0014
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 6 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 6 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 6 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 6 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 6 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 7 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 7 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 7 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.0014
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 7 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 7 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 7 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00139
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 8 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 8 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00139
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 8 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 8 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 8 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 8 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.0014
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 9 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 9 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 9 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 9 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 9 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 9 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 10 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 10 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.0014
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 10 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 10 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 10 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 10 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 11 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 11 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 11 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 11 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00139
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 11 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 11 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 12 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 12 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 12 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 12 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00139
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 12 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00139
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 12 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 13 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00143
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 13 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.0014
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 13 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00145
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 13 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 13 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 13 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00139
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 14 and Scale Factor : 10
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 14 and Scale Factor : 20
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 14 and Scale Factor : 25
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00141
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 14 and Scale Factor : 30
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00142
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 14 and Scale Factor : 40
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00147
+Total no. of success : 1 and total no. of failures : 0
+
+Starting AWS Lambda Test
+Retry count : 14 and Scale Factor : 50
+Total execution tim e of 1: 5
+Average time including network latency : 5
+Average time excluding network latency : 5.00144
+Total no. of success : 1 and total no. of failures : 0
+
