@@ -6,7 +6,7 @@
 
 4. $ make clean && make all
 
-5. This test invokes 900 lambdas each printing HELLOWORLD and writing to a sample text file
+5. This test invokes 900 lambdas each printing HELLOWORLD and writing the output to a sample text file
 
    $ ./lambda-invoke 900 HELLOWORLD sample.txt<br/>
 	Starting AWS Lambda Test<br/>
