@@ -102,41 +102,113 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named s3-sample
+# Target rules for targets named lambda-invoke
 
 # Build rule for target.
-s3-sample: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 s3-sample
-.PHONY : s3-sample
+lambda-invoke: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lambda-invoke
+.PHONY : lambda-invoke
 
 # fast build rule for target.
-s3-sample/fast:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/build
-.PHONY : s3-sample/fast
+lambda-invoke/fast:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/build
+.PHONY : lambda-invoke/fast
 
-mainbk.o: mainbk.cpp.o
-.PHONY : mainbk.o
+src/ExcameraRetryStrategy.o: src/ExcameraRetryStrategy.cpp.o
+.PHONY : src/ExcameraRetryStrategy.o
 
 # target to build an object file
-mainbk.cpp.o:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainbk.cpp.o
-.PHONY : mainbk.cpp.o
+src/ExcameraRetryStrategy.cpp.o:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/ExcameraRetryStrategy.cpp.o
+.PHONY : src/ExcameraRetryStrategy.cpp.o
 
-mainbk.i: mainbk.cpp.i
-.PHONY : mainbk.i
+src/ExcameraRetryStrategy.i: src/ExcameraRetryStrategy.cpp.i
+.PHONY : src/ExcameraRetryStrategy.i
 
 # target to preprocess a source file
-mainbk.cpp.i:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainbk.cpp.i
-.PHONY : mainbk.cpp.i
+src/ExcameraRetryStrategy.cpp.i:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/ExcameraRetryStrategy.cpp.i
+.PHONY : src/ExcameraRetryStrategy.cpp.i
 
-mainbk.s: mainbk.cpp.s
-.PHONY : mainbk.s
+src/ExcameraRetryStrategy.s: src/ExcameraRetryStrategy.cpp.s
+.PHONY : src/ExcameraRetryStrategy.s
 
 # target to generate assembly for a file
-mainbk.cpp.s:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/mainbk.cpp.s
-.PHONY : mainbk.cpp.s
+src/ExcameraRetryStrategy.cpp.s:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/ExcameraRetryStrategy.cpp.s
+.PHONY : src/ExcameraRetryStrategy.cpp.s
+
+src/LambdaInvocationRecord.o: src/LambdaInvocationRecord.cpp.o
+.PHONY : src/LambdaInvocationRecord.o
+
+# target to build an object file
+src/LambdaInvocationRecord.cpp.o:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o
+.PHONY : src/LambdaInvocationRecord.cpp.o
+
+src/LambdaInvocationRecord.i: src/LambdaInvocationRecord.cpp.i
+.PHONY : src/LambdaInvocationRecord.i
+
+# target to preprocess a source file
+src/LambdaInvocationRecord.cpp.i:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.i
+.PHONY : src/LambdaInvocationRecord.cpp.i
+
+src/LambdaInvocationRecord.s: src/LambdaInvocationRecord.cpp.s
+.PHONY : src/LambdaInvocationRecord.s
+
+# target to generate assembly for a file
+src/LambdaInvocationRecord.cpp.s:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.s
+.PHONY : src/LambdaInvocationRecord.cpp.s
+
+src/lib.o: src/lib.cpp.o
+.PHONY : src/lib.o
+
+# target to build an object file
+src/lib.cpp.o:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/lib.cpp.o
+.PHONY : src/lib.cpp.o
+
+src/lib.i: src/lib.cpp.i
+.PHONY : src/lib.i
+
+# target to preprocess a source file
+src/lib.cpp.i:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/lib.cpp.i
+.PHONY : src/lib.cpp.i
+
+src/lib.s: src/lib.cpp.s
+.PHONY : src/lib.s
+
+# target to generate assembly for a file
+src/lib.cpp.s:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/lib.cpp.s
+.PHONY : src/lib.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -146,10 +218,19 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... s3-sample"
-	@echo "... mainbk.o"
-	@echo "... mainbk.i"
-	@echo "... mainbk.s"
+	@echo "... lambda-invoke"
+	@echo "... src/ExcameraRetryStrategy.o"
+	@echo "... src/ExcameraRetryStrategy.i"
+	@echo "... src/ExcameraRetryStrategy.s"
+	@echo "... src/LambdaInvocationRecord.o"
+	@echo "... src/LambdaInvocationRecord.i"
+	@echo "... src/LambdaInvocationRecord.s"
+	@echo "... src/lib.o"
+	@echo "... src/lib.i"
+	@echo "... src/lib.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

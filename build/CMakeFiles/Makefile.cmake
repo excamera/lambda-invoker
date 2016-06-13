@@ -41,5 +41,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/s3-sample.dir/DependInfo.cmake"
+  "CMakeFiles/lambda-invoke.dir/DependInfo.cmake"
   )

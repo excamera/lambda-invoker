@@ -53,38 +53,38 @@ CMAKE_SOURCE_DIR = /home/kvasukib/LambdaPerf
 CMAKE_BINARY_DIR = /home/kvasukib/LambdaPerf/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/s3-sample.dir
+# Target rules for target CMakeFiles/lambda-invoke.dir
 
 # All Build rule for target.
-CMakeFiles/s3-sample.dir/all:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/depend
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/kvasukib/LambdaPerf/build/CMakeFiles  1
-	@echo "Built target s3-sample"
-.PHONY : CMakeFiles/s3-sample.dir/all
+CMakeFiles/lambda-invoke.dir/all:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/depend
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/kvasukib/LambdaPerf/build/CMakeFiles  1 2 3 4
+	@echo "Built target lambda-invoke"
+.PHONY : CMakeFiles/lambda-invoke.dir/all
 
 # Include target in all.
-all: CMakeFiles/s3-sample.dir/all
+all: CMakeFiles/lambda-invoke.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/s3-sample.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kvasukib/LambdaPerf/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/s3-sample.dir/all
+CMakeFiles/lambda-invoke.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kvasukib/LambdaPerf/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lambda-invoke.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kvasukib/LambdaPerf/build/CMakeFiles 0
-.PHONY : CMakeFiles/s3-sample.dir/rule
+.PHONY : CMakeFiles/lambda-invoke.dir/rule
 
 # Convenience name for target.
-s3-sample: CMakeFiles/s3-sample.dir/rule
-.PHONY : s3-sample
+lambda-invoke: CMakeFiles/lambda-invoke.dir/rule
+.PHONY : lambda-invoke
 
 # clean rule for target.
-CMakeFiles/s3-sample.dir/clean:
-	$(MAKE) -f CMakeFiles/s3-sample.dir/build.make CMakeFiles/s3-sample.dir/clean
-.PHONY : CMakeFiles/s3-sample.dir/clean
+CMakeFiles/lambda-invoke.dir/clean:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/clean
+.PHONY : CMakeFiles/lambda-invoke.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/s3-sample.dir/clean
+clean: CMakeFiles/lambda-invoke.dir/clean
 .PHONY : clean
 
 #=============================================================================
