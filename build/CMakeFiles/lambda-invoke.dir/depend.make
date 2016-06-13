@@ -130,6 +130,9 @@ CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o: /home/kvasukib/aw
 CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o: /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-lambda/include/aws/lambda/model/UpdateFunctionConfigurationResult.h
 CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o: /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-lambda/include/aws/lambda/model/VpcConfigResponse.h
 
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o: ../src/RequestParams.cpp
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o: ../src/RequestParams.hpp
+
 CMakeFiles/lambda-invoke.dir/src/lib.cpp.o: ../src/LambdaInvocationRecord.hpp
 CMakeFiles/lambda-invoke.dir/src/lib.cpp.o: ../src/lib.cpp
 CMakeFiles/lambda-invoke.dir/src/lib.cpp.o: ../src/lib.hpp
@@ -196,6 +199,7 @@ CMakeFiles/lambda-invoke.dir/src/lib.cpp.o: /home/kvasukib/aws-sdk-cpp/aws-cpp-s
 
 CMakeFiles/lambda-invoke.dir/src/main.cpp.o: ../src/ExcameraRetryStrategy.hpp
 CMakeFiles/lambda-invoke.dir/src/main.cpp.o: ../src/LambdaInvocationRecord.hpp
+CMakeFiles/lambda-invoke.dir/src/main.cpp.o: ../src/RequestParams.hpp
 CMakeFiles/lambda-invoke.dir/src/main.cpp.o: ../src/json.hpp
 CMakeFiles/lambda-invoke.dir/src/main.cpp.o: ../src/lib.hpp
 CMakeFiles/lambda-invoke.dir/src/main.cpp.o: ../src/main.cpp

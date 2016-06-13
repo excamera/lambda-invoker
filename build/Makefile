@@ -162,6 +162,30 @@ src/LambdaInvocationRecord.cpp.s:
 	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.s
 .PHONY : src/LambdaInvocationRecord.cpp.s
 
+src/RequestParams.o: src/RequestParams.cpp.o
+.PHONY : src/RequestParams.o
+
+# target to build an object file
+src/RequestParams.cpp.o:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o
+.PHONY : src/RequestParams.cpp.o
+
+src/RequestParams.i: src/RequestParams.cpp.i
+.PHONY : src/RequestParams.i
+
+# target to preprocess a source file
+src/RequestParams.cpp.i:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.i
+.PHONY : src/RequestParams.cpp.i
+
+src/RequestParams.s: src/RequestParams.cpp.s
+.PHONY : src/RequestParams.s
+
+# target to generate assembly for a file
+src/RequestParams.cpp.s:
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.s
+.PHONY : src/RequestParams.cpp.s
+
 src/lib.o: src/lib.cpp.o
 .PHONY : src/lib.o
 
@@ -225,6 +249,9 @@ help:
 	@echo "... src/LambdaInvocationRecord.o"
 	@echo "... src/LambdaInvocationRecord.i"
 	@echo "... src/LambdaInvocationRecord.s"
+	@echo "... src/RequestParams.o"
+	@echo "... src/RequestParams.i"
+	@echo "... src/RequestParams.s"
 	@echo "... src/lib.o"
 	@echo "... src/lib.i"
 	@echo "... src/lib.s"

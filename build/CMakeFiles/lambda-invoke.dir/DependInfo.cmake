@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kvasukib/LambdaPerf/src/ExcameraRetryStrategy.cpp" "/home/kvasukib/LambdaPerf/build/CMakeFiles/lambda-invoke.dir/src/ExcameraRetryStrategy.cpp.o"
   "/home/kvasukib/LambdaPerf/src/LambdaInvocationRecord.cpp" "/home/kvasukib/LambdaPerf/build/CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o"
+  "/home/kvasukib/LambdaPerf/src/RequestParams.cpp" "/home/kvasukib/LambdaPerf/build/CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o"
   "/home/kvasukib/LambdaPerf/src/lib.cpp" "/home/kvasukib/LambdaPerf/build/CMakeFiles/lambda-invoke.dir/src/lib.cpp.o"
   "/home/kvasukib/LambdaPerf/src/main.cpp" "/home/kvasukib/LambdaPerf/build/CMakeFiles/lambda-invoke.dir/src/main.cpp.o"
   )

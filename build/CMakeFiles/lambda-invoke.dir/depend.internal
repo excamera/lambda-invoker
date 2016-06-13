@@ -130,6 +130,9 @@ CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-lambda/include/aws/lambda/model/UpdateFunctionCodeResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-lambda/include/aws/lambda/model/UpdateFunctionConfigurationResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-lambda/include/aws/lambda/model/VpcConfigResponse.h
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o
+ /home/kvasukib/LambdaPerf/src/RequestParams.cpp
+ /home/kvasukib/LambdaPerf/src/RequestParams.hpp
 CMakeFiles/lambda-invoke.dir/src/lib.cpp.o
  /home/kvasukib/LambdaPerf/src/LambdaInvocationRecord.hpp
  /home/kvasukib/LambdaPerf/src/lib.cpp
@@ -197,6 +200,7 @@ CMakeFiles/lambda-invoke.dir/src/lib.cpp.o
 CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/LambdaPerf/src/ExcameraRetryStrategy.hpp
  /home/kvasukib/LambdaPerf/src/LambdaInvocationRecord.hpp
+ /home/kvasukib/LambdaPerf/src/RequestParams.hpp
  /home/kvasukib/LambdaPerf/src/json.hpp
  /home/kvasukib/LambdaPerf/src/lib.hpp
  /home/kvasukib/LambdaPerf/src/main.cpp

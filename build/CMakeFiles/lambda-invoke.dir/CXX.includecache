@@ -40,6 +40,14 @@ aws/core/Core_EXPORTS.h
 chrono
 -
 
+/home/kvasukib/LambdaPerf/src/RequestParams.cpp
+RequestParams.hpp
+/home/kvasukib/LambdaPerf/src/RequestParams.hpp
+
+/home/kvasukib/LambdaPerf/src/RequestParams.hpp
+stdint.h
+-
+
 /home/kvasukib/LambdaPerf/src/json.hpp
 algorithm
 -
@@ -179,6 +187,8 @@ ExcameraRetryStrategy.hpp
 /home/kvasukib/LambdaPerf/src/ExcameraRetryStrategy.hpp
 LambdaInvocationRecord.hpp
 /home/kvasukib/LambdaPerf/src/LambdaInvocationRecord.hpp
+RequestParams.hpp
+/home/kvasukib/LambdaPerf/src/RequestParams.hpp
 
 /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/AmazonSerializableWebServiceRequest.h
 aws/core/Core_EXPORTS.h

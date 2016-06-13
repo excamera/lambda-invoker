@@ -10,6 +10,7 @@ find_package(aws-sdk-cpp)
 add_executable(lambda-invoke src/main.cpp
 			     src/ExcameraRetryStrategy.cpp
 			     src/LambdaInvocationRecord.cpp
-			     src/lib.cpp)
+			     src/lib.cpp
+			     src/RequestParams.cpp)
 
 target_link_libraries(lambda-invoke aws-cpp-sdk-s3 aws-cpp-sdk-lambda)

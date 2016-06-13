@@ -141,12 +141,36 @@ CMakeFiles/lambda-invoke.dir/src/lib.cpp.o.provides: CMakeFiles/lambda-invoke.di
 
 CMakeFiles/lambda-invoke.dir/src/lib.cpp.o.provides.build: CMakeFiles/lambda-invoke.dir/src/lib.cpp.o
 
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o: CMakeFiles/lambda-invoke.dir/flags.make
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o: ../src/RequestParams.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/kvasukib/LambdaPerf/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o -c /home/kvasukib/LambdaPerf/src/RequestParams.cpp
+
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/kvasukib/LambdaPerf/src/RequestParams.cpp > CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.i
+
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/kvasukib/LambdaPerf/src/RequestParams.cpp -o CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.s
+
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o.requires:
+.PHONY : CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o.requires
+
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o.provides: CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o.requires
+	$(MAKE) -f CMakeFiles/lambda-invoke.dir/build.make CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o.provides.build
+.PHONY : CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o.provides
+
+CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o.provides.build: CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o
+
 # Object files for target lambda-invoke
 lambda__invoke_OBJECTS = \
 "CMakeFiles/lambda-invoke.dir/src/main.cpp.o" \
 "CMakeFiles/lambda-invoke.dir/src/ExcameraRetryStrategy.cpp.o" \
 "CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o" \
-"CMakeFiles/lambda-invoke.dir/src/lib.cpp.o"
+"CMakeFiles/lambda-invoke.dir/src/lib.cpp.o" \
+"CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o"
 
 # External object files for target lambda-invoke
 lambda__invoke_EXTERNAL_OBJECTS =
@@ -155,6 +179,7 @@ lambda-invoke: CMakeFiles/lambda-invoke.dir/src/main.cpp.o
 lambda-invoke: CMakeFiles/lambda-invoke.dir/src/ExcameraRetryStrategy.cpp.o
 lambda-invoke: CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o
 lambda-invoke: CMakeFiles/lambda-invoke.dir/src/lib.cpp.o
+lambda-invoke: CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o
 lambda-invoke: CMakeFiles/lambda-invoke.dir/build.make
 lambda-invoke: /home/kvasukib/build-aws-sdk-cpp/aws-cpp-sdk-s3/libaws-cpp-sdk-s3.so
 lambda-invoke: /home/kvasukib/build-aws-sdk-cpp/aws-cpp-sdk-lambda/libaws-cpp-sdk-lambda.so
@@ -171,6 +196,7 @@ CMakeFiles/lambda-invoke.dir/requires: CMakeFiles/lambda-invoke.dir/src/main.cpp
 CMakeFiles/lambda-invoke.dir/requires: CMakeFiles/lambda-invoke.dir/src/ExcameraRetryStrategy.cpp.o.requires
 CMakeFiles/lambda-invoke.dir/requires: CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o.requires
 CMakeFiles/lambda-invoke.dir/requires: CMakeFiles/lambda-invoke.dir/src/lib.cpp.o.requires
+CMakeFiles/lambda-invoke.dir/requires: CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o.requires
 .PHONY : CMakeFiles/lambda-invoke.dir/requires
 
 CMakeFiles/lambda-invoke.dir/clean:

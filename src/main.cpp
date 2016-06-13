@@ -37,6 +37,7 @@
 #include "lib.hpp"
 #include "ExcameraRetryStrategy.hpp"
 #include "LambdaInvocationRecord.hpp"
+#include "RequestParams.hpp"
 
 // Define constants here
 #define NANO_SECOND 1000000000
@@ -110,7 +111,8 @@ kill_locks(void)
 
 LambdaInvocationRecord
 lambda_invoke_request(Aws::Lambda::LambdaClient &client,
-		      Aws::Lambda::Model::InvokeRequest &ir)
+		      Aws::Lambda::Model::InvokeRequest &ir,
+		      RequestParams params)
 {
   std::string str("");
   LambdaInvocationRecord lir;
@@ -141,7 +143,11 @@ lambda_invoke_request(Aws::Lambda::LambdaClient &client,
     {
       case Aws::Lambda::LambdaErrors::TOO_MANY_REQUESTS:
 	std::cout << "Retrying from script..." << std::endl;
-	//return lambda_invoke_request(client, ir);
+	if (params.getAttemptedRetries() <= params.getMaxRetries())
+	{
+	  params.incrAttemptedRetries();
+	  return lambda_invoke_request(client, ir, params);
+	}
 	break;
       default:
         break;
@@ -199,6 +205,10 @@ main(int argc, char* argv[])
     invokerequest.WithFunctionName(functionName);
     Aws::Lambda::LambdaClient client{config};
 
+    RequestParams params;
+    params.setMaxRetries(3);
+    params.setAttemptedRetries(0);
+
     vector<double> diff_times_lambda_only;
     vector<double> diff_times_lambda_network;
     high_resolution_clock::time_point beginTime, endTime;
@@ -215,7 +225,8 @@ main(int argc, char* argv[])
 	futures.push_back(std::async(std::launch::async, 
 				     lambda_invoke_request,
 				     std::ref(client),
-				     std::ref(invokerequest)
+				     std::ref(invokerequest),
+				     std::ref(params)
 				    )
 			 );
     }
