@@ -133,6 +133,16 @@ CMakeFiles/lambda-invoke.dir/src/LambdaInvocationRecord.cpp.o
 CMakeFiles/lambda-invoke.dir/src/RequestParams.cpp.o
  /home/kvasukib/LambdaPerf/src/RequestParams.cpp
  /home/kvasukib/LambdaPerf/src/RequestParams.hpp
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/Core_EXPORTS.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/SDKConfig.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/StringUtils.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/UnreferencedParam.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/AWSMemory.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/MemorySystemInterface.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/stl/AWSAllocator.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/stl/AWSString.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/stl/AWSStringStream.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/stl/AWSVector.h
 CMakeFiles/lambda-invoke.dir/src/lib.cpp.o
  /home/kvasukib/LambdaPerf/src/LambdaInvocationRecord.hpp
  /home/kvasukib/LambdaPerf/src/lib.cpp
@@ -212,6 +222,8 @@ CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/NoResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/Region.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/SDKConfig.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/auth/AWSCredentialsProvider.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/auth/AWSCredentialsProviderChain.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AWSClient.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AWSError.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/AWSErrorMarshaller.h
@@ -221,14 +233,20 @@ CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/DefaultRetryStrategy.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/client/RetryStrategy.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/external/json-cpp/json.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/HttpClient.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/HttpClientFactory.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/HttpRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/HttpResponse.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/HttpTypes.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/Scheme.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/http/URI.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/platform/Platform.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/platform/PlatformAndroid.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/Array.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/DateTime.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/HashingUtils.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/Outcome.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/StringUtils.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/UnreferencedParam.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/json/JsonSerializer.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/AWSMemory.h
@@ -243,6 +261,8 @@ CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/stl/AWSString.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/stl/AWSStringStream.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/memory/stl/AWSVector.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/ratelimiter/DefaultRateLimiter.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/ratelimiter/RateLimiterInterface.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/stream/ResponseStream.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-core/include/aws/core/utils/xml/XmlSerializer.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-lambda/include/aws/lambda/LambdaClient.h
@@ -286,18 +306,27 @@ CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/AbortMultipartUploadResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/Bucket.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/BucketAccelerateStatus.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/BucketCannedACL.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/BucketLocationConstraint.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/BucketLogsPermission.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/BucketVersioningStatus.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CORSRule.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CommonPrefix.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CompleteMultipartUploadRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CompleteMultipartUploadResult.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CompletedMultipartUpload.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CompletedPart.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/Condition.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CopyObjectResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CopyPartResult.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CreateBucketConfiguration.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CreateBucketRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CreateBucketResult.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CreateMultipartUploadRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/CreateMultipartUploadResult.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/DeleteBucketRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/DeleteMarkerEntry.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/DeleteObjectRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/DeleteObjectResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/DeleteObjectsResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/DeletedObject.h
@@ -313,6 +342,7 @@ CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/GetBucketAclResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/GetBucketCorsResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/GetBucketLifecycleConfigurationResult.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/GetBucketLocationRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/GetBucketLocationResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/GetBucketLoggingResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/GetBucketNotificationConfigurationResult.h
@@ -328,6 +358,8 @@ CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/GetObjectTorrentResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/Grant.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/Grantee.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/HeadBucketRequest.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/HeadObjectRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/HeadObjectResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/IndexDocument.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/Initiator.h
@@ -337,6 +369,7 @@ CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/ListBucketsResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/ListMultipartUploadsResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/ListObjectVersionsResult.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/ListObjectsRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/ListObjectsResult.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/ListObjectsV2Result.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/ListPartsResult.h
@@ -380,4 +413,5 @@ CMakeFiles/lambda-invoke.dir/src/main.cpp.o
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/TransitionStorageClass.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/Type.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/UploadPartCopyResult.h
+ /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/UploadPartRequest.h
  /home/kvasukib/aws-sdk-cpp/aws-cpp-sdk-s3/include/aws/s3/model/UploadPartResult.h

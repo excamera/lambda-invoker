@@ -1,0 +1,13 @@
+2 retries
+==========
+Total execution time of 900: 12
+Average time including network latency : 5.76
+Average time excluding network latency : 5.00377
+Total no. of success : 900 and total no. of failures : 0
+
+0 retries
+=========
+Total execution time of 900: 11
+Average time including network latency : 5.01122
+Average time excluding network latency : 5.00272
+Total no. of success : 891 and total no. of failures : 9

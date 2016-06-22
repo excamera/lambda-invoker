@@ -15,6 +15,33 @@
 #include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/client/AWSErrorMarshaller.h>
 
+// S3
+#include <aws/core/client/ClientConfiguration.h>
+#include <aws/core/client/CoreErrors.h>
+#include <aws/core/auth/AWSCredentialsProviderChain.h>
+#include <aws/core/platform/Platform.h>
+#include <aws/core/utils/Outcome.h>
+#include <aws/s3/S3Client.h>
+#include <aws/core/utils/ratelimiter/DefaultRateLimiter.h>
+#include <aws/s3/model/DeleteBucketRequest.h>
+#include <aws/s3/model/CreateBucketRequest.h>
+#include <aws/s3/model/HeadBucketRequest.h>
+#include <aws/s3/model/PutObjectRequest.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/HashingUtils.h>
+#include <aws/core/utils/StringUtils.h>
+#include <aws/s3/model/GetObjectRequest.h>
+#include <aws/s3/model/DeleteObjectRequest.h>
+#include <aws/s3/model/HeadObjectRequest.h>
+#include <aws/s3/model/CreateMultipartUploadRequest.h>
+#include <aws/s3/model/UploadPartRequest.h>
+#include <aws/s3/model/CompleteMultipartUploadRequest.h>
+#include <aws/s3/model/ListObjectsRequest.h>
+#include <aws/s3/model/GetBucketLocationRequest.h>
+#include <aws/core/utils/DateTime.h>
+#include <aws/core/http/HttpClientFactory.h>
+#include <aws/core/http/HttpClient.h>
+
 // Add C++ header files here
 #include <fstream>
 #include <ctime>
@@ -109,15 +136,87 @@ kill_locks(void)
   OPENSSL_free(lockarray);
 }
 
+static std::vector<Aws::String>
+getListObjects(const char* bucketName)
+{
+  static const char* ALLOCATION_TAG = "S3-Client-Configuration";
+  
+  ClientConfiguration config;
+  config.region = Aws::Region::EU_WEST_1;
+  config.connectTimeoutMs = 300000;
+  config.requestTimeoutMs = 300000;
+
+  std::vector<Aws::String> vector;
+
+  static std::shared_ptr<S3Client> Client = Aws::MakeShared<S3Client>(ALLOCATION_TAG, config, false);
+
+  Aws::S3::Model::ListObjectsRequest lrequest;
+  lrequest.SetBucket(bucketName);
+
+  std::cout << "Bucket Name : " << bucketName << std::endl;
+
+  if (Client == NULL)
+  {
+    std::cout << "S3 Client not valid" << std::endl;
+  }
+
+  ListObjectsOutcome listObjectsOutcome = Client->ListObjects(lrequest);
+
+  unsigned checkForObjectsCount = 0;
+  while (checkForObjectsCount++ < 20)
+  {
+    ListObjectsOutcome listObjectsOutcome = Client->ListObjects(lrequest);
+    
+    if (listObjectsOutcome.GetResult().GetContents().size() < 500)
+    {
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+    else
+    {
+      break;
+    }
+  }
+
+  if (!listObjectsOutcome.IsSuccess())
+  {
+    std::cout << "Bucket empty" <<std::endl;
+    return vector;
+  }
+  else
+  {
+    std::cout << "Bucket has objects" << std::endl;
+  }
+
+  for (const auto& object : listObjectsOutcome.GetResult().GetContents())
+  {
+    vector.push_back(object.GetKey());
+  }
+
+  return vector;
+}
+
 LambdaInvocationRecord
 lambda_invoke_request(Aws::Lambda::LambdaClient &client,
-		      Aws::Lambda::Model::InvokeRequest &ir,
-		      RequestParams params)
+		      RequestParams &params)
 {
+
+  Aws::Lambda::Model::InvokeRequest invokerequest;
+  invokerequest.WithFunctionName(params.functionName.c_str());
+
+  std::shared_ptr<Aws::IOStream> payload = Aws::MakeShared<Aws::StringStream>(params.functionName.c_str());
+  Aws::Utils::Json::JsonValue jsonPayload;
+  jsonPayload.WithString("input_bucket_name",  params.get_input_bucket_name().c_str());
+  jsonPayload.WithString("input_s3_key",       params.input_s3_key.c_str());
+  jsonPayload.WithString("output_bucket_name", params.get_output_bucket_name().c_str());
+  *payload << jsonPayload.WriteReadable();
+  invokerequest.SetBody(payload);
+
   std::string str("");
   LambdaInvocationRecord lir;
   lir.start_time = getTime();
-  auto invokeOutcome = client.Invoke(ir);
+
+  auto invokeOutcome = client.Invoke(invokerequest);
+
   if(invokeOutcome.IsSuccess()) {
     basic_streambuf<char>* buf = invokeOutcome.GetResult().GetPayload().rdbuf();
     lir.result 		       = true;
@@ -142,11 +241,11 @@ lambda_invoke_request(Aws::Lambda::LambdaClient &client,
     switch (errCode)
     {
       case Aws::Lambda::LambdaErrors::TOO_MANY_REQUESTS:
-	std::cout << "Retrying from script..." << std::endl;
 	if (params.getAttemptedRetries() <= params.getMaxRetries())
 	{
+	  std::cout << "Retrying from script..." << std::endl;
 	  params.incrAttemptedRetries();
-	  return lambda_invoke_request(client, ir, params);
+	  return lambda_invoke_request(client, params);
 	}
 	break;
       default:
@@ -163,7 +262,8 @@ main(int argc, char* argv[])
 
     init_locks();
 
-    if (argc < 4) {
+    if (argc < 4)
+    {
 	cout<<"Too few arguments."<<endl;
 	return -1;
     }
@@ -172,17 +272,54 @@ main(int argc, char* argv[])
     char* filename     = argv[3];
     long maxRetries    = 0;
     long scaleFactor   = 0;
+    int retries        = 0;
 
-    if (argc >= 5) {
-	maxRetries = atol(argv[4]);	
-    } else {
-	maxRetries = 10;
+    const char* input_bucket_name;
+    const char* output_bucket_name;
+
+    if (argc >= 5)
+    {
+      maxRetries = atol(argv[4]);	
+    }
+    else
+    {
+      maxRetries = 10;
     }
 
-    if (argc >= 6) {
-	scaleFactor = atol(argv[5]);
-    } else {
-	scaleFactor = 25;
+    if (argc >= 6)
+    {
+      scaleFactor = atol(argv[5]);
+    }
+    else
+    {
+      scaleFactor = 25;
+    }
+
+    if (argc >= 7)
+    {
+      retries = atoi(argv[6]);
+    }
+    else
+    {
+      retries = 1;
+    }
+
+    if (argc >= 8)
+    {
+      input_bucket_name = argv[7];
+    }
+    else
+    {
+      input_bucket_name = "keith-lambda-testing";
+    }
+
+    if (argc >= 9)
+    {
+      output_bucket_name = argv[8];
+    }
+    else
+    {
+      output_bucket_name = "keith-lambda-testing-output";
     }
 
     std::cout << "nLambdas : "    << nLambdas   << " lambda : "           << functionName << std::endl;
@@ -201,17 +338,33 @@ main(int argc, char* argv[])
     config.retryStrategy    = Aws::MakeShared<DefaultRetryStrategy>(CLIENT_CONFIGURATION_ALLOCATION_TAG, maxRetries, scaleFactor);
 
     std::vector<std::future<LambdaInvocationRecord>> futures;
-    Aws::Lambda::Model::InvokeRequest invokerequest;
-    invokerequest.WithFunctionName(functionName);
     Aws::Lambda::LambdaClient client{config};
 
+    Aws::Lambda::Model::InvokeRequest invokerequest;
+    invokerequest.WithFunctionName(functionName);
+
     RequestParams params;
-    params.setMaxRetries(3);
+    params.setMaxRetries(retries);
     params.setAttemptedRetries(0);
+    params.functionName = functionName;
 
     vector<double> diff_times_lambda_only;
     vector<double> diff_times_lambda_network;
     high_resolution_clock::time_point beginTime, endTime;
+
+    std::vector<Aws::String> vector = getListObjects(input_bucket_name);
+    if (vector.size() == 0)
+    {
+      std::cout << "No objects in S3" << std::endl;
+    }
+    else
+    {
+      std::cout << vector.size() << " objects in S3 bucket." << std::endl;
+      params.set_input_bucket_name(input_bucket_name);
+      params.set_output_bucket_name(output_bucket_name);
+    }
+
+    std::vector<Aws::String>::iterator it = vector.begin();
 
     beginTime = getTime();
     for(int i = 0; i < nLambdas; i++) {
@@ -222,10 +375,16 @@ main(int argc, char* argv[])
 	 * details through LIR object in the caller, we have changed
 	 * the way we push into future and get it back
 	 */
+
+	Aws::String input_s3_key;
+	if (it != vector.end())
+	{
+	  params.input_s3_key = *it;
+	}
+
 	futures.push_back(std::async(std::launch::async, 
 				     lambda_invoke_request,
 				     std::ref(client),
-				     std::ref(invokerequest),
 				     std::ref(params)
 				    )
 			 );
