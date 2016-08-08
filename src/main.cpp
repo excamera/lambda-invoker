@@ -380,6 +380,7 @@ main(int argc, char* argv[])
 	if (it != vector.end())
 	{
 	  params.input_s3_key = *it;
+	  it++;
 	}
 
 	futures.push_back(std::async(std::launch::async, 
